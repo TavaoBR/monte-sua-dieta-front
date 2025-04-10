@@ -8,7 +8,7 @@ import FooTer from '@/components/footer/FooTer.vue';
 
 <NavBar />
 
-<main class="p-5 bg-[#FBFBFB]">
+<main class="p-5 bg-gray-100">
   <RouterView />
 </main>  
 
