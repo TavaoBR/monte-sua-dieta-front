@@ -5,7 +5,9 @@ import {RouterView} from 'vue-router';
 import NavBar from '@/components/menu/private/NavBar.vue';
 import SiderBar from '@/components/menu/private/SiderBar.vue';
 
+
 onMounted(() => {
+   
     initFlowbite();
 })
 </script>

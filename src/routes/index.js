@@ -5,6 +5,7 @@ import route from '@/routes/route.js';
 import HomePage from '@/pages/HomePage.vue';
 import LoginPage from '@/pages/LoginPage.vue';
 import PerfilPage from '@/pages/Usuario/PerfilPage.vue';
+import RegistroUsuarioPage from '@/pages/RegistroUsuarioPage.vue';
 
 const routes = [
     {
@@ -12,6 +13,7 @@ const routes = [
       component: PublicLayout,
       children: [
         {path: '', component: HomePage, name: 'home'},
+        {path: '/registro', component: RegistroUsuarioPage, name:'registro'},
         {path: '/login', component: LoginPage, name: 'login'},
       ]
     },
