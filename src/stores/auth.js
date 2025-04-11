@@ -32,18 +32,19 @@ export const userAuth = defineStore('auth', () => {
     });
 
     async function checkTokenAuth() {
-        await https.get('/auth/verifica', {
-         headers: {
-            'x-monte-ia-fit-token': token.value
-         }
-        })
-        .then((res)=>{
-            console.log(res);
-            return res.data;
-        }).catch((err)=>{
-            console.log(err);
-        });
-    }
+      try {
+          const res = await https.get('/auth/verifica', {
+              headers: {
+                  'x-monte-ia-fit-token': token.value
+              }
+          });
+          console.log(res.data);
+          return true; // token válido
+      } catch (err) {
+          console.error(err);
+          return false; // token inválido
+      }
+  }
 
 
     function logout() {

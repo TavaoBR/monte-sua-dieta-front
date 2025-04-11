@@ -1,7 +1,5 @@
 <template>
 
-
-
 <nav class="bg-[#213555] border-gray-200  dark:bg-gray-800 dark:border-gray-700">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -29,7 +27,7 @@
           <a href="#" class="block py-2 px-3 md:p-0 rounded-sm hover:bg-blue-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 text-white md:dark:hover:text-blue-500 dark:hover:bg-blue-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
         </li>
         <li>
-          <a href="#" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Cadastro</a>
+          <a href="/login" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Login</a>
         </li>
       </ul>
       

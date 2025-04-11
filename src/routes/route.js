@@ -5,17 +5,17 @@ export default async function route(to, from, next){
     const auth = userAuth();
 
     if(auth.token){
-       const isAuthenticated = await auth.checkTokenAuth()
-       if(isAuthenticated){
-         next();
-       }else{
+      const isValid = await auth.checkTokenAuth();
+      if(isValid){
+        next();
+      } else {
         auth.logout();
         next({ name: 'login' });
-       }
-    }else{
-        next({ name: 'login' });
+      }
+    } else {
+      next({ name: 'login' });
     }
-  }else{
+  } else {
     next();
   }
 }

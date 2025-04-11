@@ -3,3 +3,7 @@
 @tailwind utilities;
 
 @plugin "flowbite/plugin";
+
+body{
+    background-color: #f2f2f2;
+}
