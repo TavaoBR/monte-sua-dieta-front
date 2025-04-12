@@ -12,21 +12,20 @@ export const UsuarioDados = () => {
   const token = ref(getCookie("token"));
 
   const usuario = reactive({
-    nomeUsuario: '',
-    email: '',
-    avatar: ''
+    nomeUsuario: "",
+    email: "",
+    avatar: "",
   });
 
   const pessoa = reactive({
-    nome: '',
-    sobrenome: '',
-    idade: '',
-    sexo: '',
-    altura: '',
-    peso: ''
-
-  })
-
+    nome: "",
+    sobrenome: "",
+    idade: "",
+    sexo: "",
+    altura: "",
+    peso: "",
+    encontrado: false,
+  });
 
   async function usuarioDados() {
     await https
@@ -37,9 +36,10 @@ export const UsuarioDados = () => {
       })
       .then((res) => {
         const dados = res.data;
-        usuario.nomeUsuario = dados.NomeUsuario
-        usuario.email = dados.Email
-        usuario.avatar = dados.Avatar
+        usuario.nomeUsuario = dados.NomeUsuario;
+        usuario.email = dados.Email;
+        usuario.avatar = dados.Avatar;
+
         return true;
       })
       .catch((err) => {
@@ -50,30 +50,36 @@ export const UsuarioDados = () => {
 
   async function pessoaDados() {
     await https
-    .get()
-    .then((res)=>{
-        const dados = res.data
-        pessoa.nome = dados.Nome
-        pessoa.sobrenome = dados.sobrenome
-        pessoa.idade = dados.idade
-        pessoa.sexo = dados.sexo
-        pessoa.altura = dados.Altura
-        pessoa.peso = dados.Peso
+      .get("/pessoa", {
+        headers: {
+          "x-monte-ia-fit-token": token.value,
+        },
+      })
+      .then((res) => {
+        const dados = res.data;
+        pessoa.nome = dados.Nome;
+        pessoa.sobrenome = dados.Sobrenome;
+        pessoa.idade = dados.Idade;
+        pessoa.sexo = dados.Sexo;
+        pessoa.altura = dados.Altura;
+        pessoa.peso = dados.Peso;
+        pessoa.encontrado = true;
         return true;
-    }).catch((err)=>{
-       const response = err.response
-       if(response.status === 404){
-        return SEMCADASTRADO 
-       }
-       
-       return false;
-    })
+      })
+      .catch((err) => {
+        const response = err.response;
+        if (response.status === 404) {
+          return pessoa.encontrado;
+        }
+
+        return false;
+      });
   }
 
   return {
     usuario,
     usuarioDados,
     pessoa,
-    pessoaDados
+    pessoaDados,
   };
 };
