@@ -39,7 +39,7 @@
               href="/usuario/perfil"
               class="ms-1 text-sm font-medium text-white hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
             >
-            {{ usuario.nomeUsuario }}</a
+              Perfil</a
             >
           </div>
         </li>
@@ -63,34 +63,146 @@
             </svg>
             <span
               class="ms-1 text-sm font-bold text-blue-400 md:ms-2 dark:text-gray-400"
-              >Add Inf Pessoais</span
+              >Informações Pessoais</span
             >
           </div>
         </li>
       </ol>
     </nav>
 
+    <section
+      class="bg-gray-900 dark:bg-gray-900"
+      v-if="pessoa.encontrado === true"
+    >
+      <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+        <h1
+          class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl dark:text-white"
+        >
+          Notamos que você adicionou suas informações
+        </h1>
+        <p
+          class="mb-8 text-lg font-normal text-gray-200 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400"
+        >
+          Tudo certo! Suas informações foram registradas. Se quiser dar uma
+          olhada, é só ir até o seu perfil.
+        </p>
+        <div
+          class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0"
+        >
+          <a
+            href="/usuario/perfil"
+            class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+          >
+            Voltar ao perfil
+          </a>
+        </div>
+      </div>
+    </section>
 
+    <!-- Container para centralizar -->
     <div
-      class="flex items-center justify-center h-48 mb-4 rounded-sm bg-gray-50 dark:bg-gray-800"
-    ></div>
-    
+      class="flex bg-gray-100 dark:bg-gray-900"
+      v-if="pessoa.encontrado === false"
+    >
+      <div
+        class="w-full max-w-auto p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
+      >
+        <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
+          Adicionar Informações Pessoais
+        </h2>
 
+        <form>
+          <div class="grid gap-6 mb-6 md:grid-cols-2">
+            <div>
+              <label
+                for="first_name"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Nome</label
+              >
+              <input
+                type="text"
+                id="first_name"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+            <div>
+              <label
+                for="last_name"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Sobrenome</label
+              >
+              <input
+                type="text"
+                id="last_name"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+
+            <div>
+              <label
+                for="Idade"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Idade</label
+              >
+              <input
+                type="number"
+                id="Idade"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+
+            <div>
+              <label
+                for="Sexo"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Sexo</label
+              >
+
+              <select
+                id="Sexo"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option selected>Selecione o seu sexo</option>
+                <option value="M">Maculino</option>
+                <option value="F">Feminino</option>
+              </select>
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Enviar
+          </button>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
+import https from "@/api/https.js";
+import { reactive } from "vue";
+import Swal from "sweetalert2";
 import { UsuarioDados } from "@/utils/usuarioDados";
 import { onMounted } from "vue";
 
-const { usuario, usuarioDados } = UsuarioDados();
 const { pessoa, pessoaDados } = UsuarioDados();
 
+const pessoaRegistro = reactive({
+  nome: "",
+  sobrenome: "",
+  idade: "",
+  sexo: "",
+  altura: "",
+  peso: "",
+});
+
+function verificarCampos() {}
+
+async function add() {}
 
 onMounted(async () => {
-  await usuarioDados();
   await pessoaDados();
 });
 </script>
-
-
