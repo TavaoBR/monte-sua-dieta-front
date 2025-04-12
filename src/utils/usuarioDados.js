@@ -17,6 +17,16 @@ export const UsuarioDados = () => {
     avatar: ''
   });
 
+  const pessoa = reactive({
+    nome: '',
+    sobrenome: '',
+    idade: '',
+    sexo: '',
+    altura: '',
+    peso: ''
+
+  })
+
 
   async function usuarioDados() {
     await https
@@ -38,8 +48,32 @@ export const UsuarioDados = () => {
       });
   }
 
+  async function pessoaDados() {
+    await https
+    .get()
+    .then((res)=>{
+        const dados = res.data
+        pessoa.nome = dados.Nome
+        pessoa.sobrenome = dados.sobrenome
+        pessoa.idade = dados.idade
+        pessoa.sexo = dados.sexo
+        pessoa.altura = dados.Altura
+        pessoa.peso = dados.Peso
+        return true;
+    }).catch((err)=>{
+       const response = err.response
+       if(response.status === 404){
+        return SEMCADASTRADO 
+       }
+       
+       return false;
+    })
+  }
+
   return {
     usuario,
-    usuarioDados
+    usuarioDados,
+    pessoa,
+    pessoaDados
   };
 };
