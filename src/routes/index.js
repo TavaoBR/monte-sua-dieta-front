@@ -4,8 +4,11 @@ import PrivateLayout from '@/layouts/PrivateLayout.vue';
 import route from '@/routes/route.js';
 import HomePage from '@/pages/HomePage.vue';
 import LoginPage from '@/pages/LoginPage.vue';
-import PerfilPage from '@/pages/Usuario/PerfilPage.vue';
 import RegistroUsuarioPage from '@/pages/RegistroUsuarioPage.vue';
+
+//Usuario Interno
+import PerfilPage from '@/pages/Usuario/PerfilPage.vue';
+import InformacoesPessoaisPage from '@/pages/Usuario/add/InformacoesPessoaisPage.vue';
 
 const routes = [
     {
@@ -23,6 +26,7 @@ const routes = [
         component: PrivateLayout,
         children: [
             {path: 'perfil', component: PerfilPage, name: 'usuario-perfil', meta: {auth: true}},
+            {path: 'adicionar/informacoes/pessoais', component: InformacoesPessoaisPage, name:'adicionar-informacoes-pessoais', meta: {auth: true}}
         ]
       }
 ];

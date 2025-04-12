@@ -212,6 +212,7 @@
 
               <button
                 type="button"
+                @click="irAdcionarInformacoesPessoais"
                 class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 text-white font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center items-center"
               >
                 <svg
@@ -332,7 +333,9 @@ function sexo(sexo) {
   return sexo;
 }
 
-function irAdcionarInformacoesPessoais() {}
+function irAdcionarInformacoesPessoais() {
+    window.location.href = '/usuario/adicionar/informacoes/pessoais'
+}
 
 onMounted(async () => {
   await usuarioDados();
