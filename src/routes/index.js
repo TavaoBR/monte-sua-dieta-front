@@ -9,6 +9,7 @@ import RegistroUsuarioPage from '@/pages/RegistroUsuarioPage.vue';
 //Usuario Interno
 import PerfilPage from '@/pages/Usuario/PerfilPage.vue';
 import InformacoesPessoaisPage from '@/pages/Usuario/add/InformacoesPessoaisPage.vue';
+import EstiloAlimentarPage from '@/pages/Usuario/add/EstiloAlimentarPage.vue';
 
 const routes = [
     {
@@ -26,7 +27,8 @@ const routes = [
         component: PrivateLayout,
         children: [
             {path: 'perfil', component: PerfilPage, name: 'usuario-perfil', meta: {auth: true}},
-            {path: 'adicionar/informacoes/pessoais', component: InformacoesPessoaisPage, name:'adicionar-informacoes-pessoais', meta: {auth: true}}
+            {path: 'adicionar/informacoes/pessoais', component: InformacoesPessoaisPage, name:'adicionar-informacoes-pessoais', meta: {auth: true}},
+            {path: 'adicionar/estilo/alimentar', component: EstiloAlimentarPage, name:'adicionar-estilo-alimentacao', meta: {auth: true} }
         ]
       }
 ];
