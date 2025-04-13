@@ -111,6 +111,7 @@ export const UsuarioDados = () => {
   }
 
   return {
+    token,
     usuario,
     usuarioDados,
     pessoa,
