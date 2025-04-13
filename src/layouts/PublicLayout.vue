@@ -15,11 +15,14 @@ onMounted(() => {
 
 <template>
 
-<NavBar />
+<div class="min-h-screen flex flex-col">
+    <NavBar />
 
-<main class="p-5">
-  <RouterView />
-</main>  
+    <!-- Main content area, flex-grow empurra o footer pra baixo -->
+    <main class="flex-grow p-5">
+      <RouterView />
+    </main>
 
-<FooTer />
+    <FooTer />
+  </div>
 </template>

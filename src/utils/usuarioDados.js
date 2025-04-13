@@ -24,7 +24,7 @@ export const UsuarioDados = () => {
     sexo: "",
     altura: "",
     peso: "",
-    encontrado: false,
+    encontrado: "",
   });
 
   async function usuarioDados() {
@@ -69,7 +69,8 @@ export const UsuarioDados = () => {
       .catch((err) => {
         const response = err.response;
         if (response.status === 404) {
-          return pessoa.encontrado;
+          pessoa.encontrado = false;
+          return pessoa.encontrado
         }
 
         return false;

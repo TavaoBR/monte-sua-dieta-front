@@ -133,31 +133,31 @@ const registro = reactive({
 
 function verificarCampos() {
   if (
-    registro.usuario === '' &&
-    registro.email === '' &&
-    registro.senha === '' &&
-    registro.avatar === ''
+    registro.usuario === "" &&
+    registro.email === "" &&
+    registro.senha === "" &&
+    registro.avatar === ""
   ) {
     Swal.fire("Atenção", "Preencha todos os campos", "warning");
     return false;
   }
 
-  if (registro.usuario === '') {
+  if (registro.usuario === "") {
     Swal.fire("Atenção", "Digite um nome de usuario por favor", "warning");
     return false;
   }
 
-  if (registro.email === '') {
+  if (registro.email === "") {
     Swal.fire("Atenção", "Digite seu melhor e-mail por favor", "warning");
     return false;
   }
 
-  if (registro.senha === '') {
+  if (registro.senha === "") {
     Swal.fire("Atenção", "Digite uma senha por favor", "warning");
     return false;
   }
 
-  if (registro.avatar === '') {
+  if (registro.avatar === "") {
     Swal.fire(
       "Atenção",
       "Escolhe uma imagem para ser seu avatar por favor",
@@ -186,7 +186,7 @@ const uploadArquivo = (event) => {
 };
 
 async function criar() {
-    if(!verificarCampos()) return;
+  if (!verificarCampos()) return;
 
   Swal.fire({
     title: "Processando...",

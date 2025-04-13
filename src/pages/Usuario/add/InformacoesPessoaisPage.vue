@@ -105,13 +105,13 @@
       v-if="pessoa.encontrado === false"
     >
       <div
-        class="w-full max-w-auto p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
+        class="w-full max-w-auto p-6 bg-white rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
       >
         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
           Adicionar Informações Pessoais
         </h2>
 
-        <form>
+        <form @submit.prevent="add">
           <div class="grid gap-6 mb-6 md:grid-cols-2">
             <div>
               <label
@@ -122,6 +122,7 @@
               <input
                 type="text"
                 id="first_name"
+                v-model="pessoaRegistro.nome"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>
@@ -134,6 +135,7 @@
               <input
                 type="text"
                 id="last_name"
+                v-model="pessoaRegistro.sobrenome"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>
@@ -147,6 +149,7 @@
               <input
                 type="number"
                 id="Idade"
+                v-model="pessoaRegistro.idade"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>
@@ -160,12 +163,47 @@
 
               <select
                 id="Sexo"
+                v-model="pessoaRegistro.sexo"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option selected>Selecione o seu sexo</option>
                 <option value="M">Maculino</option>
                 <option value="F">Feminino</option>
               </select>
+            </div>
+
+            <div>
+              <label
+                for="Altura"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Sua altura</label
+              >
+              <input
+                type="text"
+                id="Altura"
+                v-model="pessoaRegistro.altura"
+                @input="formatarAltura"
+                maxlength="4"
+                placeholder="1.75"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+
+            <div>
+              <label
+                for="Peso"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Seu peso</label
+              >
+              <input
+                type="text"
+                id="Peso"
+                v-model="pessoaRegistro.peso"
+                @input="formatarPeso"
+                maxlength="5"
+                placeholder="70.5"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
             </div>
           </div>
           <button
@@ -182,12 +220,14 @@
 
 <script setup>
 import https from "@/api/https.js";
+import { userAuth } from "@/stores/auth";
 import { reactive } from "vue";
 import Swal from "sweetalert2";
 import { UsuarioDados } from "@/utils/usuarioDados";
 import { onMounted } from "vue";
 
 const { pessoa, pessoaDados } = UsuarioDados();
+const auth = userAuth();
 
 const pessoaRegistro = reactive({
   nome: "",
@@ -198,9 +238,82 @@ const pessoaRegistro = reactive({
   peso: "",
 });
 
-function verificarCampos() {}
+function formatarAltura() {
+  let numeros = pessoaRegistro.altura.replace(/\D/g, "");
+  if (numeros.length > 3) numeros = numeros.slice(0, 3);
 
-async function add() {}
+  if (numeros.length >= 2) {
+    pessoaRegistro.altura = numeros[0] + "." + numeros.slice(1);
+  } else {
+    pessoaRegistro.altura = numeros;
+  }
+}
+
+function formatarPeso() {
+  let numeros = pessoaRegistro.peso.replace(/\D/g, "");
+  if (numeros.length > 5) numeros = numeros.slice(0, 5);
+
+  if (numeros.length < 3) numeros = numeros.padStart(3, "0");
+
+  const parteInteira = numeros.slice(0, -2);
+  const decimal = numeros.slice(-2);
+  pessoaRegistro.peso = `${parseInt(parteInteira)}.${decimal}`;
+}
+
+function verificarCampos() {
+  if (
+    pessoaRegistro.nome === "" &&
+    pessoaRegistro.sobrenome === "" &&
+    pessoaRegistro.idade.length === 0 &&
+    pessoaRegistro.sexo === "" &&
+    pessoaRegistro.altura === "" &&
+    pessoaRegistro.peso === ""
+  ) {
+    Swal.fire("Atenção", "Preencha todos os campos", "warning");
+    return false;
+  }
+
+  return true;
+}
+
+async function add() {
+  if (!verificarCampos()) return;
+  console.log(auth.token);
+
+  Swal.fire({
+    title: "Processando...",
+    text: "Aguarde um momento",
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading();
+    },
+  });
+
+  await https
+    .post("/pessoa/cadastro", pessoaRegistro, {
+      headers: {
+        "x-monte-ia-fit-token": auth.token,
+      },
+    })
+    .then((res) => {
+      Swal.close();
+      console.log(res);
+      Swal.fire({
+        title: "Sucesso",
+        text: res.data.message,
+        icon: "success",
+        confirmButtonText: "OK",
+      }).then(() => {
+        window.location.href = "/usuario/perfil";
+      });
+    })
+    .catch((err) => {
+      Swal.close();
+      console.log(err);
+      const res = err.response;
+      Swal.fire("Erro", `${res.data.message}`, "error");
+    });
+}
 
 onMounted(async () => {
   await pessoaDados();

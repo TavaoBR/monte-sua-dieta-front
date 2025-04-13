@@ -8,8 +8,9 @@
       <ul class="space-y-2 font-medium">
         <li v-for="(item, index) in menuItens" :key="index">
           <a
+            @click="item.click"
             :href="item.href"
-            class="group flex items-center p-2 text-white rounded-lg hover:text-black hover:bg-gray-100 dark:hover:bg-gray-700"
+            :class="'group flex items-center p-2 text-white rounded-lg hover:text-black hover:bg-gray-100 dark:hover:bg-gray-700 ' + '' + item.cursor"
           >
             <span v-html="item.icon" />
 
@@ -169,6 +170,23 @@
 </template>
 
 <script setup>
+import { userAuth } from "@/stores/auth";
+import Swal from "sweetalert2";
+
+const auth = userAuth();
+
+function deslogar() {
+  auth.logout();
+  Swal.fire({
+    title: "Sucesso",
+    text: "Deslogado com sucesso",
+    icon: "success",
+    confirmButtonText: "OK",
+  }).then(() => {
+    window.location.href = "/login";
+  });
+}
+
 const menuItens = [
   {
     title: "Home",
@@ -212,7 +230,8 @@ const menuItens = [
   },
   {
     title: "Sair",
-    href: "#",
+    cursor: "cursor-pointer",
+    click: deslogar,
     badge: "",
     icon: `
          <svg
