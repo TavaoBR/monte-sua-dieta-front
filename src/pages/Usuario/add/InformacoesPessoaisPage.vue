@@ -167,7 +167,7 @@
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option selected>Selecione o seu sexo</option>
-                <option value="M">Maculino</option>
+                <option value="M">Masculino</option>
                 <option value="F">Feminino</option>
               </select>
             </div>
@@ -221,12 +221,11 @@
 <script setup>
 import https from "@/api/https.js";
 import { userAuth } from "@/stores/auth";
-import { reactive } from "vue";
 import Swal from "sweetalert2";
 import { UsuarioDados } from "@/utils/usuarioDados";
-import { onMounted } from "vue";
+import { onMounted, reactive } from "vue";
 
-const { pessoa, pessoaDados } = UsuarioDados();
+const { pessoaDados } = UsuarioDados();
 const auth = userAuth();
 
 const pessoaRegistro = reactive({
