@@ -27,6 +27,13 @@ export const UsuarioDados = () => {
     encontrado: "",
   });
 
+  const padraoAlimentar = reactive({
+    dietaEspc: "",
+    restricao: "",
+    preferencia: "",
+    encontrado: "",
+  });
+
   async function usuarioDados() {
     await https
       .get("/usuario", {
@@ -70,7 +77,33 @@ export const UsuarioDados = () => {
         const response = err.response;
         if (response.status === 404) {
           pessoa.encontrado = false;
-          return pessoa.encontrado
+          return pessoa.encontrado;
+        }
+
+        return false;
+      });
+  }
+
+  async function padraoAlimentarDados() {
+    await https
+      .get("/padrao-alimentar", {
+        headers: {
+          "x-monte-ia-fit-token": token.value,
+        },
+      })
+      .then((res) => {
+        const dados = res.data;
+        padraoAlimentar.dietaEspc = dados.DietaEspecifica
+        padraoAlimentar.restricao = dados.RestricaoAlimentar
+        padraoAlimentar.preferencia = dados.PreferenciaAlimentar
+        padraoAlimentar.encontrado = true
+        return true
+      })
+      .catch((err) => {
+        const res = err.response;
+        if (res.status === 404) {
+          padraoAlimentar.encontrado = false;
+          return padraoAlimentar.encontrado;
         }
 
         return false;
@@ -82,5 +115,7 @@ export const UsuarioDados = () => {
     usuarioDados,
     pessoa,
     pessoaDados,
+    padraoAlimentar,
+    padraoAlimentarDados,
   };
 };
