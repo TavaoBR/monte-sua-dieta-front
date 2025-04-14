@@ -114,13 +114,13 @@
           <div class="grid gap-6 mb-6 md:grid-cols-2">
             <div>
               <label
-                for=""
+                for="dietaEspc"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Você segue alguma dieta específica?
               </label>
               <select
-                id=""
+                id="dietaEspc"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option
@@ -134,14 +134,16 @@
             </div>
             <div>
               <label
-                for=""
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Você possui alguma restrição alimentar ?
               </label>
 
-              <div class="flex">
-                <div class="flex items-center me-4" v-for="opcao in itensRestricao">
+              <div class="flex flex-wrap gap-4">
+                <div
+                  class="flex items-center me-4"
+                  v-for="opcao in itensRestricao"
+                >
                   <input
                     :id="opcao.value"
                     type="checkbox"
@@ -188,8 +190,8 @@ const selectDieta = [
     value: "",
   },
   {
-    label: "Nenhuma",
-    value: "nenhuma",
+    label: "Nenhuma, como de tudo",
+    value: "como de tudo",
   },
   {
     label: "Vegetariana",

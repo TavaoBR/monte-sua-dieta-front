@@ -225,7 +225,7 @@ import Swal from "sweetalert2";
 import { UsuarioDados } from "@/utils/usuarioDados";
 import { onMounted, reactive } from "vue";
 
-const { pessoaDados } = UsuarioDados();
+const { pessoa, pessoaDados } = UsuarioDados();
 const auth = userAuth();
 
 const pessoaRegistro = reactive({
