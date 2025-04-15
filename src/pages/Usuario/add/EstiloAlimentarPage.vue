@@ -110,7 +110,7 @@
           Adicionar Perfil Nutricional
         </h2>
 
-        <form>
+        <form @submit.prevent="add">
           <div class="grid gap-6 mb-6 md:grid-cols-2">
             <div>
               <label
@@ -120,6 +120,7 @@
                 Você segue alguma dieta específica?
               </label>
               <select
+                v-model="padraoRegistro.dietaEspc"
                 id="dietaEspc"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
@@ -145,6 +146,7 @@
                   v-for="opcao in itensRestricao"
                 >
                   <input
+                    v-model="padraoRegistro.restricao"
                     :id="opcao.value"
                     type="checkbox"
                     :value="opcao.value"
@@ -158,7 +160,29 @@
                 </div>
               </div>
             </div>
+
+            <div>
+              <label
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                for="preferencias"
+              >
+                Você possui alguma preferência alimentar?
+              </label>
+              <textarea
+                v-model="padraoRegistro.preferencias"
+                id="preferencias"
+                rows="8"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Ex: evito carne vermelha, prefiro orgânicos, não gosto de frutas cítricas..."
+              />
+            </div>
           </div>
+          <button
+            type="submit"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Enviar
+          </button>
         </form>
       </div>
     </div>
@@ -181,8 +205,6 @@ const auth = userAuth();
 const { padraoAlimentar, padraoAlimentarDados } = UsuarioDados();
 
 const isLoading = ref(true);
-
-const padraoRegistro = reactive({});
 
 const selectDieta = [
   {
@@ -233,6 +255,72 @@ const itensRestricao = [
     value: "Hipertensão",
   },
 ];
+
+const padraoRegistro = reactive({
+  dietaEspc: "",
+  restricao: [],
+  preferencias: "",
+});
+
+function verficarCampos() {
+  if (
+    padraoRegistro.dietaEspc === "" &&
+    padraoRegistro.restricao.length === 0 &&
+    padraoRegistro.preferencias === ""
+  ) {
+    Swal.fire("Atenção", "Preencha todos os campos", "warning");
+    return false;
+  }
+
+  return true;
+}
+
+async function verificarPrefencia() {
+  Swal.fire({
+    title: "Processando...",
+    text: "Aguarde um momento",
+    allowOutsideClick: false,
+    didOpen: () => {
+      Swal.showLoading();
+    },
+  });
+  
+  await https 
+  .post("/ia/verificar/preferencias-alimentares", padraoRegistro, {
+    headers: {
+      "x-monte-ia-fit-token": auth.token,
+    },
+  })
+  .then((res)=>{
+    Swal.close();
+    console.log(res);
+    return true;
+  }).catch((err)=>{
+    Swal.close();
+    console.log(err);
+    const res = err.response;
+    Swal.fire("Erro", `${res.data.message}`, "error");
+    return false;
+  })
+}
+
+async function add() {
+  if(!verficarCampos()) return;
+
+  const prefOk = await verificarPrefencia(); // importante esperar
+  if (!prefOk) return;
+
+  await https
+  .post()
+  .then((res)=>{
+    
+  }).catch((err)=>{
+    
+  })
+
+
+}
+
 
 onMounted(async () => {
   await padraoAlimentarDados();

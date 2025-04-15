@@ -277,7 +277,6 @@ function verificarCampos() {
 
 async function add() {
   if (!verificarCampos()) return;
-  console.log(auth.token);
 
   Swal.fire({
     title: "Processando...",
