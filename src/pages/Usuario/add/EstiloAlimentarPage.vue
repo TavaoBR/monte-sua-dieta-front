@@ -110,7 +110,7 @@
           Adicionar Perfil Nutricional
         </h2>
 
-        <form @submit.prevent="add">
+        <form @submit.prevent="verificarPrefencia">
           <div class="grid gap-6 mb-6 md:grid-cols-2">
             <div>
               <label
@@ -239,6 +239,10 @@ const selectDieta = [
 
 const itensRestricao = [
   {
+    label: "Nenhuma",
+    value: "nenhuma"
+  },
+  {
     label: "Intolerância à lactose",
     value: "lactose",
   },
@@ -276,6 +280,9 @@ function verficarCampos() {
 }
 
 async function verificarPrefencia() {
+
+  if (!verficarCampos()) return;
+
   Swal.fire({
     title: "Processando...",
     text: "Aguarde um momento",
@@ -284,43 +291,54 @@ async function verificarPrefencia() {
       Swal.showLoading();
     },
   });
-  
-  await https 
-  .post("/ia/verificar/preferencias-alimentares", padraoRegistro, {
-    headers: {
-      "x-monte-ia-fit-token": auth.token,
-    },
-  })
-  .then((res)=>{
-    Swal.close();
-    console.log(res);
-    return true;
-  }).catch((err)=>{
-    Swal.close();
-    console.log(err);
-    const res = err.response;
-    Swal.fire("Erro", `${res.data.message}`, "error");
-    return false;
-  })
+
+  await https
+    .post("/ia/verificar/preferencias-alimentares", padraoRegistro, {
+      headers: {
+        "x-monte-ia-fit-token": auth.token,
+      },
+    })
+    .then((res) => {
+      console.log(res);
+
+      return add();
+    })
+    .catch((err) => {
+      Swal.close();
+      console.log(err);
+      const res = err.response;
+      Swal.fire("Erro", `${res.data.message}`, "error");
+      return false;
+    });
 }
 
 async function add() {
-  if(!verficarCampos()) return;
-
-  const prefOk = await verificarPrefencia(); // importante esperar
-  if (!prefOk) return;
-
+ 
   await https
-  .post()
-  .then((res)=>{
-    
-  }).catch((err)=>{
-    
-  })
-
-
+    .post("/padrao-alimentar/cadastro", padraoRegistro, {
+      headers: {
+        "x-monte-ia-fit-token": auth.token,
+      },
+    })
+    .then((res) => {
+      Swal.close();
+      console.log(res);
+      Swal.fire({
+        title: "Sucesso",
+        text: res.data.message,
+        icon: "success",
+        confirmButtonText: "OK",
+      }).then(() => {
+        window.location.href = "/usuario/perfil";
+      });
+    })
+    .catch((err) => {
+      Swal.close();
+      console.log(err);
+      const res = err.response;
+      Swal.fire("Erro", `${res.data.message}`, "error");
+    });
 }
-
 
 onMounted(async () => {
   await padraoAlimentarDados();
