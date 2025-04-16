@@ -1,11 +1,14 @@
 <script setup>
 import { UsuarioDados } from "@/utils/usuarioDados";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
+import SpinnerLoading from "@/components/sistema/SpinnerLoading.vue";
 
 const { usuario, usuarioDados } = UsuarioDados();
+const isLoading = ref(true);
 
 onMounted(async () => {
   await usuarioDados();
+  isLoading.value = false;
 });
 </script>
 <template>
@@ -17,8 +20,13 @@ onMounted(async () => {
       Informações do usuario
     </p>
 
+    <div class="text-center" v-if="isLoading === true">
+      <SpinnerLoading />
+    </div>
+
     <!-- Container principal -->
     <div
+      v-if="isLoading === false"
       class="px-4 pb-4 flex flex-col items-center text-center sm:text-left sm:flex-row sm:items-center sm:gap-4"
     >
       <!-- Imagem do usuário -->
@@ -37,12 +45,12 @@ onMounted(async () => {
       </div>
     </div>
 
-    <hr />
+    <hr v-if="isLoading === false" />
 
-    <br />
+    <br v-if="isLoading === false" />
 
     <!-- Botão editar -->
-    <div class="px-4 pb-4">
+    <div class="px-4 pb-4" v-if="isLoading === false">
       <button
         type="button"
         class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 text-white font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center items-center"
