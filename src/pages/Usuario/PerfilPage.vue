@@ -55,7 +55,7 @@
       <PessoaisInfo />
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+    <!--<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
       <PerfilNutricional />
 
       <div
@@ -65,15 +65,15 @@
           Hábitos Alimentares
         </p>
       </div>
-    </div>
+    </div>-->
 
     <!-- Card grande -->
-    <div
+    <!--<div
       class="flex items-center justify-center h-48 mb-4 rounded-sm bg-gray-50 dark:bg-gray-800"
-    ></div>
+    ></div>-->
 
     <!-- Grid cards pequenos -->
-    <div class="grid grid-cols-2 sm:grid-cols-2 gap-4 mb-4">
+    <!--<div class="grid grid-cols-2 sm:grid-cols-2 gap-4 mb-4">
       <div
         v-for="i in 4"
         :key="'a' + i"
@@ -94,60 +94,14 @@
           />
         </svg>
       </div>
-    </div>
-
-    <!-- Outro card grande -->
-    <div
-      class="flex items-center justify-center h-48 mb-4 rounded-sm bg-gray-50 dark:bg-gray-800"
-    >
-      <svg
-        class="w-6 h-6 text-gray-400 dark:text-gray-500"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 18 18"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M9 1v16M1 9h16"
-        />
-      </svg>
-    </div>
-
-    <!-- Última grid -->
-    <div class="grid grid-cols-2 sm:grid-cols-2 gap-4">
-      <div
-        v-for="i in 4"
-        :key="'b' + i"
-        class="flex items-center justify-center rounded-sm bg-gray-50 h-28 dark:bg-gray-800"
-      >
-        <svg
-          class="w-6 h-6 text-gray-400 dark:text-gray-500"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 18 18"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9 1v16M1 9h16"
-          />
-        </svg>
-      </div>
-    </div>
+    </div>-->
   </div>
 
 </template>
 
 <script setup>
-import SpinnerLoagin from "@/components/sistema/SpinnerLoagin.vue";
 import UsuarioInfo from "@/components/sistema/perfil/UsuarioInfo.vue";
 import PessoaisInfo from "@/components/sistema/perfil/PessoaisInfo.vue";
-import PerfilNutricional from "@/components/sistema/perfil/PerfilNutricional.vue";
-
+//import PerfilNutricional from "@/components/sistema/perfil/PerfilNutricional.vue";
 
 </script>
