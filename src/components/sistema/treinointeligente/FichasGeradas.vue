@@ -1,3 +1,7 @@
+<script setup>
+
+</script>
+
 <template>
   <div class="bg-gray-900 relative overflow-x-auto shadow-md sm:rounded-lg">
     <table
