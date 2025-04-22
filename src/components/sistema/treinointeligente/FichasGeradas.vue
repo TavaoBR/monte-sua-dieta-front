@@ -1,5 +1,11 @@
 <script setup>
+import { fichasGeradasDados } from '@/utils/fichasGeradas';
+import { onMounted } from 'vue';
+const  {lista, fichas} = fichasGeradasDados();
 
+onMounted(async ()=>{
+   await fichas();  
+})
 </script>
 
 <template>
@@ -34,17 +40,18 @@
       <tbody>
         <tr
           class="border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200"
+          v-for="index in lista"
         >
           <th
             scope="row"
             class="px-6 py-4 font-medium text-white whitespace-nowrap dark:text-white"
           >
-            Hipertrofia
+            {{ index.Objetivo }}
           </th>
-          <td class="px-6 py-4">40 pontos</td>
+          <td class="px-6 py-4">{{ index.PontosUsados }}</td>
           <td class="px-6 py-4">
             <a
-              href="#"
+              :href="`/ficha-treino/${index.id}`"
               class="font-medium bg-text-white dark:text-blue-500 hover:underline"
               >Mais Detalhes</a
             >

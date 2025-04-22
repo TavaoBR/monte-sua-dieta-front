@@ -374,7 +374,7 @@ async function gerarFicha() {
   });
 
   await https
-    .post("/ia/ficha-treino/gerar", ficha, {
+    .post("/ia/ficha-treino", ficha, {
       headers: {
         "x-monte-ia-fit-token": auth.token,
       },

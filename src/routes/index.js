@@ -13,6 +13,7 @@ import EstiloAlimentarPage from "@/pages/Usuario/add/EstiloAlimentarPage.vue";
 
 //Treino Inteligente
 import FichasTreinoPage from "@/pages/IA/FichasTreinoPage.vue";
+import FichaTreinoPage from "@/pages/IA/FichaTreinoPage.vue";
 import CriarFichaTreinoPage from "@/pages/IA/CriarFichaTreinoPage.vue";
 
 const routes = [
@@ -61,6 +62,12 @@ const routes = [
         name: "fichas-treino",
         meta: { auth: true },
       },
+      {
+        path: ":id",
+        component: FichaTreinoPage,
+        name: 'ficha-treino-dado',
+        meta: { auth: true},
+      }, 
       {
         path: "criar",
         component: CriarFichaTreinoPage,
