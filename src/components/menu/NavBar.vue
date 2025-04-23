@@ -43,7 +43,7 @@
       >
         <a href="/" class="flex items-center">
           <img
-            src="/src/assets/logo1.png"
+            src="/src/assets/logo1 (1).png"
             class="mr-3 h-6 sm:h-9"
             alt="Flowbite Logo"
           />

@@ -1,6 +1,8 @@
 <script setup>
-import headerSection from '../components/site/headerSection.vue';
+import sobreSection from '@/components/site/sobreSection.vue';
+import funcionalidadesSection from '@/components/site/funcionalidadesSection.vue';
 </script>
 <template>
-<headerSection />
+<sobreSection />
+<funcionalidadesSection />
 </template>
