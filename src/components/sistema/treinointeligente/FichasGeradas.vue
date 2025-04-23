@@ -33,6 +33,8 @@ onMounted(async ()=>{
       >
         <tr>
           <th scope="col" class="px-6 py-3">Objetivo</th>
+          <th scope="col" class="px-6 py-3">Nível</th>
+          <th scope="col" class="px-6 py-3">Local Treino</th>
           <th scope="col" class="px-6 py-3">Pontos usados</th>
           <th scope="col" class="px-6 py-3">Opção</th>
         </tr>
@@ -48,6 +50,8 @@ onMounted(async ()=>{
           >
             {{ index.Objetivo }}
           </th>
+          <td class="px-6 py-4">{{ index.Nivel }}</td>
+          <td class="px-6 py-4">{{ index.LocalTreino }}</td>
           <td class="px-6 py-4">{{ index.PontosUsados }}</td>
           <td class="px-6 py-4">
             <a

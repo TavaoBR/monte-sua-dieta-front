@@ -482,10 +482,6 @@ const localDisponivel = [
     value: "academia",
   },
   {
-    label: "Em casa",
-    value: "em casa",
-  },
-  {
     label: "Ar livre",
     value: "ar livre",
   },

@@ -200,8 +200,8 @@
                 id="Peso"
                 v-model="pessoaRegistro.peso"
                 @input="formatarPeso"
-                maxlength="5"
-                placeholder="70.5"
+                maxlength="3"
+                placeholder="exemplos (80 ou 180)"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>
@@ -249,14 +249,12 @@ function formatarAltura() {
 }
 
 function formatarPeso() {
-  let numeros = pessoaRegistro.peso.replace(/\D/g, "");
-  if (numeros.length > 5) numeros = numeros.slice(0, 5);
+  let numeros = pessoaRegistro.peso.replace(/\D/g, ""); // Remove tudo que não for número
 
-  if (numeros.length < 3) numeros = numeros.padStart(3, "0");
+  // Limita a no máximo 3 dígitos
+  numeros = numeros.slice(0, 3);
 
-  const parteInteira = numeros.slice(0, -2);
-  const decimal = numeros.slice(-2);
-  pessoaRegistro.peso = `${parseInt(parteInteira)}.${decimal}`;
+  pessoaRegistro.peso = numeros;
 }
 
 function verificarCampos() {

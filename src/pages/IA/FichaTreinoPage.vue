@@ -85,7 +85,7 @@ onMounted(async () => {
       </ol>
     </nav>
 
-    <div class="px-6" v-html="fichaDados.resultado" />
+    <div class="flex flex-wrap justify-start gap-6" v-html="fichaDados.resultado" />
 
 
   </div>
