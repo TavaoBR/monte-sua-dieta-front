@@ -38,7 +38,6 @@ export const userAuth = defineStore('auth', () => {
                   'x-monte-ia-fit-token': token.value
               }
           });
-          console.log(res.data);
           return true; // token válido
       } catch (err) {
           console.error(err);

@@ -6,6 +6,33 @@ import SpinnerLoading from "@/components/sistema/SpinnerLoading.vue";
 const { usuario, usuarioDados } = UsuarioDados();
 const isLoading = ref(true);
 
+function formatarFitCoins(numero) {
+  if (numero === null || numero === undefined || isNaN(numero)) {
+    return "0";
+  }
+
+  if (numero < 1000) {
+    return numero.toString();
+  } else if (numero < 1000000) {
+    return (
+      (numero / 1000).toFixed(numero % 1000 === 0 ? 0 : 1).replace(".", ",") +
+      "k"
+    );
+  } else if (numero < 1000000000) {
+    return (
+      (numero / 1000000)
+        .toFixed(numero % 1000000 === 0 ? 0 : 1)
+        .replace(".", ",") + "kk"
+    );
+  } else {
+    return (
+      (numero / 1000000000)
+        .toFixed(numero % 1000000000 === 0 ? 0 : 1)
+        .replace(".", ",") + "kkk"
+    );
+  }
+}
+
 onMounted(async () => {
   await usuarioDados();
   isLoading.value = false;
@@ -42,6 +69,10 @@ onMounted(async () => {
           <h5 class="text-xl font-bold">{{ usuario.nomeUsuario }}</h5>
         </div>
         <h6 class="text-gray-400 text-sm">{{ usuario.email }}</h6>
+        <h6 class="text-gray-400 text-sm">
+          <span class="text-white">Créditos na plataforma:</span>
+          {{ formatarFitCoins(usuario.credito) }} FitCoins
+        </h6>
       </div>
     </div>
 

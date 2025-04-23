@@ -35,7 +35,7 @@ onMounted(async ()=>{
           <th scope="col" class="px-6 py-3">Objetivo</th>
           <th scope="col" class="px-6 py-3">Nível</th>
           <th scope="col" class="px-6 py-3">Local Treino</th>
-          <th scope="col" class="px-6 py-3">Pontos usados</th>
+          <th scope="col" class="px-6 py-3">FitCoins usados</th>
           <th scope="col" class="px-6 py-3">Opção</th>
         </tr>
       </thead>

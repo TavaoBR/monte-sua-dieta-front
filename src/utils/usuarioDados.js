@@ -15,6 +15,7 @@ export const UsuarioDados = () => {
     nomeUsuario: "",
     email: "",
     avatar: "",
+    credito: "",
   });
 
   const pessoa = reactive({
@@ -46,7 +47,7 @@ export const UsuarioDados = () => {
         usuario.nomeUsuario = dados.NomeUsuario;
         usuario.email = dados.Email;
         usuario.avatar = dados.Avatar;
-
+        usuario.credito = dados.Credito;
         return true;
       })
       .catch((err) => {
