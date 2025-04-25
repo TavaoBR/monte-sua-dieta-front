@@ -15,13 +15,21 @@ export const fitCoinsApi = () => {
 
   async function pacotesFetch() {
     await https
-      .get("", {
+      .get("/fit-coins", {
         headers: {
           "x-monte-ia-fit-token": token.value,
         },
       })
-      .then((res) => {})
-      .catch((err) => {});
+      .then((res) => {
+        console.log(res)
+        const dados = res.data;
+        pacotes.splice(0, pacotes.length, ...dados)
+        return true;
+      })
+      .catch((err) => {
+        console.log(err)
+        return false;
+      });
   }
 
   return {
