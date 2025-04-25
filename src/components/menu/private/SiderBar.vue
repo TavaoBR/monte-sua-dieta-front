@@ -165,7 +165,7 @@ const menuItens = computed(() => {
     },
     {
       title: "FitCoins",
-      href: "#",
+      href: "/fit-coins/pacotes",
       badge: `${formatarFitCoins(credito.value)}`,
       icon: `
      <svg 

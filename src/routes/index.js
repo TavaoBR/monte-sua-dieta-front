@@ -16,6 +16,10 @@ import FichasTreinoPage from "@/pages/IA/FichasTreinoPage.vue";
 import FichaTreinoPage from "@/pages/IA/FichaTreinoPage.vue";
 import CriarFichaTreinoPage from "@/pages/IA/CriarFichaTreinoPage.vue";
 
+//Pacotes FitCoins
+import PacotesPage from "@/pages/FitCoins/PacotesPage.vue";
+import DetalhesPacote from "@/pages/FitCoins/DetalhesPacote.vue";
+
 const routes = [
   {
     path: "/",
@@ -76,6 +80,24 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/fit-coins",
+    component: PrivateLayout,
+    children: [
+      {
+        path: 'pacotes',
+        component: PacotesPage,
+        name: 'fit-coins-pacotes',
+        meta: { auth: true }
+      },
+      {
+        path: 'pacotes/detalhes/:id',
+        component: DetalhesPacote,
+        name: 'fit-coins-pacotes-detalhes',
+        meta: { auth: true }
+      }
+    ]
+  }
 ];
 
 const router = createRouter({
