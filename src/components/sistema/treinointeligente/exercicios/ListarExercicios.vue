@@ -32,7 +32,7 @@ onMounted(async () => {
       <div class="text-white text-xl mb-2">Exercício</div>
       <h2 class="text-white text-lg font-bold mb-2">{{ index.Exercicio }}</h2>
       <ul class="list-disc list-inside text-sm mb-2 text-white">
-        <li>Musculo Ativado: {{ index.musculoAtivado }}</li>
+        <li>Músculo Ativado: {{ index.musculoAtivado }}</li>
         <li>Series: {{ index.Series }}</li>
         <li>Repetições: {{ index.Repeticoes }}</li>
         <li>Equipamento: {{ index.Equipamento }}</li>
