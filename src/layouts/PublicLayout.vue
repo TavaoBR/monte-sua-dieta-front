@@ -19,7 +19,7 @@ onMounted(() => {
     <NavBar />
 
     <!-- Main content area, flex-grow empurra o footer pra baixo -->
-    <main class="flex-grow p-5">
+    <main class="flex-grow p-5 bg-white">
       <RouterView />
     </main>
 

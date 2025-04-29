@@ -12,6 +12,10 @@ import InformacoesPessoaisPage from "@/pages/Usuario/add/InformacoesPessoaisPage
 import EstiloAlimentarPage from "@/pages/Usuario/add/EstiloAlimentarPage.vue";
 
 //Treino Inteligente
+import IndexPage from "@/pages/IA/TreinoInteligente/IndexPage.vue";
+import GerarExercicioPage from "@/pages/IA/TreinoInteligente/Exercicios/GerarExercicioPage.vue";
+import ListarGruposMuscularesPage from "@/pages/IA/TreinoInteligente/Exercicios/ListarGruposMuscularesPage.vue";
+import VisualizarExerciciosPage from "@/pages/IA/TreinoInteligente/Exercicios/VisualizarExerciciosPage.vue";
 import FichasTreinoPage from "@/pages/IA/FichasTreinoPage.vue";
 import FichaTreinoPage from "@/pages/IA/FichaTreinoPage.vue";
 import CriarFichaTreinoPage from "@/pages/IA/CriarFichaTreinoPage.vue";
@@ -57,6 +61,37 @@ const routes = [
   },
 
   {
+    path: "/treino-inteligente",
+    component: PrivateLayout,
+    children: [
+      {
+        path: "",
+        component: IndexPage,
+        name: "treino-inteligente",
+        meta: { auth: true },
+      },
+      {
+        path: "listar-exercicios-gerados",
+        component: ListarGruposMuscularesPage,
+        name: "listar-exercicios-gerados",
+        meta: { auth: true },
+      },
+      {
+        path: "gerar-exercicios",
+        component: GerarExercicioPage,
+        name: "gerar-exercicios",
+        meta: { auth: true },
+      },
+      {
+        path: "visualizar-exercicios-grupo-muscular/:id",
+        component: VisualizarExerciciosPage,
+        name: "visualizar-exercicios-grupo-muscular",
+        meta: { auth: true },
+      },
+    ],
+  },
+
+  {
     path: "/ficha-treino",
     component: PrivateLayout,
     children: [
@@ -69,9 +104,9 @@ const routes = [
       {
         path: ":id",
         component: FichaTreinoPage,
-        name: 'ficha-treino-dado',
-        meta: { auth: true},
-      }, 
+        name: "ficha-treino-dado",
+        meta: { auth: true },
+      },
       {
         path: "criar",
         component: CriarFichaTreinoPage,
@@ -85,19 +120,19 @@ const routes = [
     component: PrivateLayout,
     children: [
       {
-        path: 'pacotes',
+        path: "pacotes",
         component: PacotesPage,
-        name: 'fit-coins-pacotes',
-        meta: { auth: true }
+        name: "fit-coins-pacotes",
+        meta: { auth: true },
       },
       {
-        path: 'pacotes/detalhes/:id',
+        path: "pacotes/detalhes/:id",
         component: DetalhesPacote,
-        name: 'fit-coins-pacotes-detalhes',
-        meta: { auth: true }
-      }
-    ]
-  }
+        name: "fit-coins-pacotes-detalhes",
+        meta: { auth: true },
+      },
+    ],
+  },
 ];
 
 const router = createRouter({

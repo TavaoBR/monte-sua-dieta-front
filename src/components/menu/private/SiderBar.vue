@@ -130,7 +130,7 @@ const menuItens = computed(() => {
     },
     {
       title: "Treino Inteligente",
-      href: "/ficha-treino",
+      href: "/treino-inteligente",
       badge: "",
       icon: `
       <svg 

@@ -380,7 +380,7 @@ async function gerarFicha() {
       },
     })
     .then((res) => {
-        Swal.close();
+      Swal.close();
       console.log(res);
       Swal.fire({
         title: "Sucesso",
