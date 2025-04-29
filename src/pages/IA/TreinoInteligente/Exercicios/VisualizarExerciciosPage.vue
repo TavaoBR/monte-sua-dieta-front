@@ -36,7 +36,7 @@
               />
             </svg>
             <a
-              class="ms-1 text-sm font-bold text-blue-400 md:ms-2 dark:text-gray-400"
+              class="ms-1 text-sm font-medium text-white hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
             >
               Treino Inteligente</a
             >
@@ -69,5 +69,10 @@
         </li>
       </ol>
     </nav>
+    <ListarExercicios />
   </div>
 </template>
+
+<script setup>
+import ListarExercicios from '@/components/sistema/treinointeligente/exercicios/ListarExercicios.vue';
+</script>

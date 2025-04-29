@@ -5,7 +5,7 @@ import App from './App.vue'
 import { createPinia } from 'pinia';
 import router from './routes/index.js'
 import 'flowbite';
-
+import 'simple-datatables';
 
 
 const app = createApp(App);

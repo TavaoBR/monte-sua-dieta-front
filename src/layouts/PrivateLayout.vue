@@ -7,7 +7,6 @@ import SiderBar from '@/components/menu/private/SiderBar.vue';
 
 
 onMounted(() => {
-   
     initFlowbite();
 })
 </script>

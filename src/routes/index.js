@@ -14,7 +14,7 @@ import EstiloAlimentarPage from "@/pages/Usuario/add/EstiloAlimentarPage.vue";
 //Treino Inteligente
 import IndexPage from "@/pages/IA/TreinoInteligente/IndexPage.vue";
 import GerarExercicioPage from "@/pages/IA/TreinoInteligente/Exercicios/GerarExercicioPage.vue";
-import ListarGruposMuscularesPage from "@/pages/IA/TreinoInteligente/Exercicios/ListarGruposMuscularesPage.vue";
+import ListarMusculosPage from "@/pages/IA/TreinoInteligente/Exercicios/ListarMusculosPage.vue";
 import VisualizarExerciciosPage from "@/pages/IA/TreinoInteligente/Exercicios/VisualizarExerciciosPage.vue";
 import FichasTreinoPage from "@/pages/IA/FichasTreinoPage.vue";
 import FichaTreinoPage from "@/pages/IA/FichaTreinoPage.vue";
@@ -71,9 +71,9 @@ const routes = [
         meta: { auth: true },
       },
       {
-        path: "listar-exercicios-gerados",
-        component: ListarGruposMuscularesPage,
-        name: "listar-exercicios-gerados",
+        path: "listar-musculos-escolhidos",
+        component: ListarMusculosPage,
+        name: "listar-musculos-escolhidos",
         meta: { auth: true },
       },
       {
@@ -83,9 +83,9 @@ const routes = [
         meta: { auth: true },
       },
       {
-        path: "visualizar-exercicios-grupo-muscular/:id",
+        path: "listar-exercicios/:id",
         component: VisualizarExerciciosPage,
-        name: "visualizar-exercicios-grupo-muscular",
+        name: "listar-exercicios",
         meta: { auth: true },
       },
     ],

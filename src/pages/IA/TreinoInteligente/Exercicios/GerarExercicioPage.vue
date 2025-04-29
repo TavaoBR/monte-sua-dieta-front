@@ -255,7 +255,7 @@ async function gerarExercicios() {
         icon: "success",
         confirmButtonText: "OK",
       }).then(() => {
-        window.location.href = "/treino-inteligente/listar-exercicios-gerados";
+        window.location.href = "/treino-inteligente/listar-musculos-escolhidos";
       });
     })
     .catch((err) => {
