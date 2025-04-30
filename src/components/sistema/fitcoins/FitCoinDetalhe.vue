@@ -43,15 +43,16 @@ onMounted(async () => {
             </p>
           </div>
 
-
-          <GerarPagamentos />
-
+          <div class="mt-4 sm:items-center sm:gap-4 sm:flex">
+            <p class=" text-gray-500 dark:text-gray-400">
+            {{ pacote.Descricao }}
+          </p>
+          </div>
 
           <hr class="my-6 md:my-8 border-gray-200 dark:border-gray-800" />
 
-          <p class="mb-6 text-gray-500 dark:text-gray-400">
-            {{ pacote.Descricao }}
-          </p>
+          <GerarPagamentos :id="id"/>
+
 
         </div>
       </div>
