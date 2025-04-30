@@ -12,6 +12,7 @@ export const fitCoinsApi = () => {
   const token = ref(getCookie("token"));
 
   const pacotes = reactive([]);
+  const pacote = reactive({})
 
   async function pacotesFetch() {
     await https
@@ -32,8 +33,29 @@ export const fitCoinsApi = () => {
       });
   }
 
+  async function fitCoin(id) {
+    await https
+    .get(`/fit-coins/${id}`, {
+      headers: {
+        "x-monte-ia-fit-token": token.value,
+      },
+    })
+    .then((res) => {
+      console.log(res)
+      const dados = res.data;
+      Object.assign(pacote, dados);
+      return true;
+    })
+    .catch((err) => {
+      console.log(err)
+      return false;
+    });
+  }
+
   return {
     pacotesFetch,
+    fitCoin,
     pacotes,
+    pacote
   };
 };

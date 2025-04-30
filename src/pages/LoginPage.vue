@@ -109,17 +109,8 @@ async function logar() {
     .post("/auth/login", login)
     .then((res) => {
       Swal.close();
-
       auth.setToken(res.data.token);
-
-      Swal.fire({
-        title: "Sucesso",
-        text: res.data.message,
-        icon: "success",
-        confirmButtonText: "OK",
-      }).then(() => {
-        window.location.href = "/usuario/perfil";
-      });
+      window.location.href = "/usuario/perfil";
     })
     .catch((err) => {
       Swal.close();
