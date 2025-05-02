@@ -16,13 +16,14 @@ import IndexPage from "@/pages/IA/TreinoInteligente/IndexPage.vue";
 import GerarExercicioPage from "@/pages/IA/TreinoInteligente/Exercicios/GerarExercicioPage.vue";
 import ListarMusculosPage from "@/pages/IA/TreinoInteligente/Exercicios/ListarMusculosPage.vue";
 import VisualizarExerciciosPage from "@/pages/IA/TreinoInteligente/Exercicios/VisualizarExerciciosPage.vue";
-import FichasTreinoPage from "@/pages/IA/FichasTreinoPage.vue";
-import FichaTreinoPage from "@/pages/IA/FichaTreinoPage.vue";
-import CriarFichaTreinoPage from "@/pages/IA/CriarFichaTreinoPage.vue";
+import GerarFichaPage from "@/pages/IA/TreinoInteligente/Fichas/GerarFichaPage.vue";
+import ListarFichasPage from "@/pages/IA/TreinoInteligente/Fichas/ListarFichasPage.vue";
+import ListarExerciciosPage from "@/pages/IA/TreinoInteligente/Fichas/ListarExerciciosPage.vue";
 
 //Pacotes FitCoins
 import PacotesPage from "@/pages/FitCoins/PacotesPage.vue";
 import DetalhesPacote from "@/pages/FitCoins/DetalhesPacote.vue";
+
 
 const routes = [
   {
@@ -88,31 +89,24 @@ const routes = [
         name: "listar-exercicios",
         meta: { auth: true },
       },
-    ],
-  },
-
-  {
-    path: "/ficha-treino",
-    component: PrivateLayout,
-    children: [
       {
-        path: "",
-        component: FichasTreinoPage,
+        path: "fichas-treino",
+        component: ListarFichasPage,
         name: "fichas-treino",
         meta: { auth: true },
       },
       {
-        path: ":id",
-        component: FichaTreinoPage,
-        name: "ficha-treino-dado",
+        path: "fichas-treino/:token",
+        component: ListarExerciciosPage,
+        name: "ficha-treino-exercicios",
         meta: { auth: true },
       },
       {
-        path: "criar",
-        component: CriarFichaTreinoPage,
-        name: "criar-ficha-treino",
+        path: "fichas-treino/gerar",
+        component: GerarFichaPage,
+        name: "gerar-ficha-treino",
         meta: { auth: true },
-      },
+      }
     ],
   },
   {
