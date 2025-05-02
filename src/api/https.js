@@ -1,6 +1,11 @@
 import axios from "axios";
 
-const baseURL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1'
+
+const baseURL = window.location.hostname === 'localhost'
+  ? 'http://localhost:8000/api/v1'
+  : 'https://apiminhaiafit.sistemasgu.com/api/v1';
+
+
 
 const https = axios.create({
     baseURL: baseURL,
