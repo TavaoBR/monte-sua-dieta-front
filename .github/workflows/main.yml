@@ -1,0 +1,42 @@
+name: Frontend - production
+
+on:
+  push:
+    branches: [ main ] 
+
+jobs:
+  build_and_upload:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |     
+          npm install -g yarn
+          yarn
+
+      - name: Build project
+        run: |
+          npm run build
+          
+      - name: Create .htaccess file
+        run: |
+          cat <<EOF > dist/.htaccess
+          <IfModule mod_rewrite.c>
+            RewriteEngine On
+            RewriteBase /minhaiafit/
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteCond %{REQUEST_FILENAME} !-d
+            RewriteRule ^ index.html [L]
+          </IfModule>
+          EOF    
+
+      - name: Deploy to FTP server
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5         
+        with:
+          server: 77.37.127.235
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: /
