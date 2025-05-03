@@ -16,17 +16,21 @@
       </ul>
       <div v-if="dia.ArrayExcercicios.length">
         <p class="mb-2 text-white"><strong>Exercícios:</strong></p>
-        <ul
+        <ol
           v-for="(exercicio, index) in dia.ArrayExcercicios"
           :key="index"
-          class="list-disc list-inside text-sm  text-white"
+          class="list-disc list-inside text-sm text-white"
         >
-          <li> {{ exercicio.nome }}: {{ exercicio.series }}x de {{ exercicio.repeticoes }} rep </li>
+          <li>
+            {{ exercicio.nome }}: {{ exercicio.series }}x de
+            {{ exercicio.repeticoes }} rep
+          </li>
           <li>Descanso: {{ exercicio.descanso }} segundos</li>
           <li>Musculo(s) Ativado(s): {{ exercicio.musculoAtivado }}</li>
           <li>Equipamento Necessario: {{ exercicio.equipamentoNecessario }}</li>
-          <hr/>
-        </ul>
+          <br />
+          <hr />
+        </ol>
       </div>
     </div>
   </div>
