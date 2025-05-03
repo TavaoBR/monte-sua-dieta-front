@@ -18,16 +18,18 @@ export const fichasGeradasDados = () => {
         resultado: ''
       })
 
+      const listarDadosFicha = reactive([])
+
       async function fichas() {
         await https
-        .get("/ia/ficha-treino", {
+        .get("/fichas", {
             headers: {
              "x-monte-ia-fit-token": token.value,
             },
         })
         .then((res)=>{
             console.log(res);
-            const dados = res.data
+            const dados = res.data.result
             lista.splice(0, lista.length, ...dados);
             return true;
         }).catch((err)=>{
@@ -37,17 +39,17 @@ export const fichasGeradasDados = () => {
       }
 
 
-      async function ficha(id){
+      async function fichaExercicios(id){
         await https
-        .get(`/ia/ficha-treino/${id}`, {
+        .get(`/fichas/exercicios/${id}`, {
             headers: {
              "x-monte-ia-fit-token": token.value,
             },
         })
         .then((res)=>{
             console.log(res);
-            const dados = res.data;
-            fichaDados.resultado = dados.Resultado;
+            const dados = res.data.result;
+            listarDadosFicha.splice(0, listarDadosFicha.length, ...dados);
             return true;
         }).catch((err)=>{
           console.log(err);
@@ -58,8 +60,9 @@ export const fichasGeradasDados = () => {
 
       return {
         lista,
+        listarDadosFicha,
         fichas,
-        ficha,
+        fichaExercicios,
         fichaDados,
       }
 }

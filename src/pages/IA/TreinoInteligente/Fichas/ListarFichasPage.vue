@@ -87,7 +87,11 @@
       >Gerar Nova Ficha de treino</a
     >
 
-
+    <ListarFichas />
 
   </div>
 </template>
+
+<script setup>
+import ListarFichas from '@/components/sistema/treinointeligente/fichas/ListarFichas.vue';
+</script>
