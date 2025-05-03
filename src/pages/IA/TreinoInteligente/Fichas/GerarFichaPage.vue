@@ -627,6 +627,10 @@ const selectCardio = [
     label: "Caminhada ao Ar Livre - Intenso",
     value: "caminhada ao ar livre - intenso",
   },
+  {
+    label: "Não quero fazer cárdio",
+    value: "não quero fazer cárdio"
+  }
 ];
 
 onMounted(async () => {
