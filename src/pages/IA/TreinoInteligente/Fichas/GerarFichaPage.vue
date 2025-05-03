@@ -104,9 +104,17 @@
         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
           Gerar Ficha
         </h2>
-        <p class="mb-4"><strong>Atenção</strong> caso der um erro <strong>"Resposta da IA inválida, tente novamente daqui a pouco"</strong> , clique em <strong>"Ok"</strong> e depois clique em <strong>"Gerar Ficha"</strong>. Isso acontece porque a IA não consegue enviar de primeira a resposta no formato desejado, então é necessario uma segunda tentativa.</p>
+        <p class="mb-4">
+          <strong>Atenção</strong> caso der um erro
+          <strong
+            >"Resposta da IA inválida, tente novamente daqui a pouco"</strong
+          >
+          , clique em <strong>"Ok"</strong> e depois clique em
+          <strong>"Gerar Ficha"</strong>. Isso acontece porque a IA não consegue
+          enviar de primeira a resposta no formato desejado, então é necessario
+          uma segunda tentativa.
+        </p>
         <p class="mb-4 font-bold">Será gastos 400 FitCoins ao gerar a ficha</p>
-        
 
         <form @submit.prevent="gerarFicha">
           <div class="grid gap-6 mb-6 md:grid-cols-2">
@@ -563,6 +571,10 @@ const selectCardio = [
     label: "Selecione uma opção",
     value: "",
   },
+  {
+    label: "Não quero fazer cárdio",
+    value: "não quero fazer cárdio",
+  },
   // Bicicleta Ergométrica
   {
     label: "Bicicleta Ergométrica - Leve",
@@ -627,10 +639,6 @@ const selectCardio = [
     label: "Caminhada ao Ar Livre - Intenso",
     value: "caminhada ao ar livre - intenso",
   },
-  {
-    label: "Não quero fazer cárdio",
-    value: "não quero fazer cárdio"
-  }
 ];
 
 onMounted(async () => {
