@@ -172,7 +172,7 @@
                 v-model="padraoRegistro.preferencias"
                 id="preferencias"
                 rows="8"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-100 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Ex: evito carne vermelha, prefiro orgânicos, não gosto de frutas cítricas..."
               />
             </div>
@@ -240,7 +240,7 @@ const selectDieta = [
 const itensRestricao = [
   {
     label: "Nenhuma",
-    value: "nenhuma"
+    value: "nenhuma",
   },
   {
     label: "Intolerância à lactose",
@@ -280,7 +280,6 @@ function verficarCampos() {
 }
 
 async function verificarPrefencia() {
-
   if (!verficarCampos()) return;
 
   Swal.fire({
@@ -313,7 +312,6 @@ async function verificarPrefencia() {
 }
 
 async function add() {
- 
   await https
     .post("/padrao-alimentar/cadastro", padraoRegistro, {
       headers: {

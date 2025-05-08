@@ -3,15 +3,20 @@ import { UsuarioDados } from "@/utils/usuarioDados";
 import { onMounted, ref } from "vue";
 import SpinnerLoading from "@/components/sistema/SpinnerLoading.vue";
 
-const { padraoAlimentar, padraoAlimentarDados } = UsuarioDados();
+const { perfilNutricionalDados, perfilNutricional } = UsuarioDados();
 const isLoading = ref(true);
 
 function irAdicionarPadraoAlimentar() {
   window.location.href = "/usuario/adicionar/estilo/alimentar";
 }
 
+function truncarTexto(texto, limite = 60) {
+  if (!texto) return "";
+  return texto.length > limite ? texto.slice(0, limite).trim() + "..." : texto;
+}
+
 onMounted(async () => {
-  await padraoAlimentarDados();
+  await perfilNutricional();
   isLoading.value = false;
 });
 </script>
@@ -30,12 +35,16 @@ onMounted(async () => {
 
     <div
       class="flex items-center justify-center px-4 pb-4 text-center sm:flex-row sm:items-center sm:gap-4"
-      v-if="padraoAlimentar.encontrado === false && isLoading === false"
+      v-if="perfilNutricionalDados.encontrado === false && isLoading === false"
     >
       <div class="font-medium flex flex-col gap-4">
         <div class="flex flex-col">
           <p class="text-white whitespace-pre-line dark:text-gray-400">
             Você não adicinou seu estilo alimentar
+          </p>
+
+          <p class="text-white whitespace-pre-line dark:text-gray-400">
+            Adicione e ganhe 200 fitcoins
           </p>
 
           <p class="text-white whitespace-pre-line dark:text-gray-400">
@@ -69,39 +78,72 @@ onMounted(async () => {
 
     <div
       class="px-4 pb-4 flex flex-col sm:flex-row sm:gap-8"
-      v-if="padraoAlimentar.encontrado === true && isLoading === false"
+      v-if="perfilNutricionalDados.encontrado === true && isLoading === false"
     >
       <div class="font-medium flex flex-col gap-4">
         <div class="flex flex-col">
+          <h5 class="text-lg font-bold">Objetivo</h5>
+          <h6 class="text-gray-400 text-sm">
+            {{ perfilNutricionalDados.objetivo }}
+          </h6>
           <h5 class="text-lg font-bold">Dieta</h5>
-          <h6 class="text-gray-400 text-sm">{{ padraoAlimentar.dietaEspc }}</h6>
-        </div>
-      </div>
-
-      <div class="font-medium flex flex-col gap-4">
-        <div class="flex flex-col">
-          <h5 class="text-lg font-bold">Restrição</h5>
-          <h6 class="text-gray-400 text-sm">{{ padraoAlimentar.restricao }}</h6>
+          <h6 class="text-gray-400 text-sm">
+            {{ perfilNutricionalDados.dieta }}
+          </h6>
+          <h5 class="text-lg font-bold">Nível de Atividade física</h5>
+          <h6 class="text-gray-400 text-sm">
+            {{ perfilNutricionalDados.nivel_atividade }}
+          </h6>
         </div>
       </div>
 
       <div class="font-medium flex flex-col gap-4">
         <div class="flex flex-col">
           <h5 class="text-lg font-bold">Preferências</h5>
+          <h6
+            class="text-gray-400 text-sm"
+            :title="perfilNutricionalDados.preferencia"
+          >
+            {{ truncarTexto(perfilNutricionalDados.preferencia, 40) }}
+          </h6>
+          <h5 class="text-lg font-bold">Restrições</h5>
           <h6 class="text-gray-400 text-sm">
-            {{ padraoAlimentar.preferencia }}
+            {{ perfilNutricionalDados.restricao }}
+          </h6>
+        </div>
+      </div>
+
+      <div class="font-medium flex flex-col gap-4">
+        <div class="flex flex-col">
+          <h5 class="text-lg font-bold">Condições Médicas</h5>
+          <h6
+            class="text-gray-400 text-sm"
+            :title="perfilNutricionalDados.condicoesMedica"
+          >
+            {{ truncarTexto(perfilNutricionalDados.condicoesMedica, 40) }}
+          </h6>
+          <h5 class="text-lg font-bold">Alergias</h5>
+          <h6
+            class="text-gray-400 text-sm"
+            :title="perfilNutricionalDados.alergias"
+          >
+            {{ truncarTexto(perfilNutricionalDados.alergias, 40) }}
           </h6>
         </div>
       </div>
     </div>
 
-    <hr v-if="padraoAlimentar.encontrado === true && isLoading === false" />
+    <hr
+      v-if="perfilNutricionalDados.encontrado === true && isLoading === false"
+    />
 
-    <br v-if="padraoAlimentar.encontrado === true && isLoading === false" />
+    <br
+      v-if="perfilNutricionalDados.encontrado === true && isLoading === false"
+    />
 
     <div
       class="px-4 pb-4"
-      v-if="padraoAlimentar.encontrado === true && isLoading === false"
+      v-if="perfilNutricionalDados.encontrado === true && isLoading === false"
     >
       <button
         type="button"

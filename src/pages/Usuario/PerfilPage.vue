@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-lg mt-14" >
+  <div class="rounded-lg mt-14">
     <!-- Breadcrumb -->
     <nav
       class="flex px-3 py-3 mb-4 text-white border border-gray-200 rounded-lg bg-gray-900 dark:bg-gray-800 dark:border-gray-700"
@@ -55,17 +55,9 @@
       <PessoaisInfo />
     </div>
 
-    <!--<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
       <PerfilNutricional />
-
-      <div
-        class="h-auto rounded-xl bg-gray-900 text-white shadow-md w-full sm:w-auto sm:h-auto"
-      >
-        <p class="p-4 text-lg font-semibold flex items-center gap-1">
-          Hábitos Alimentares
-        </p>
-      </div>
-    </div>-->
+    </div>
 
     <!-- Card grande -->
     <!--<div
@@ -96,12 +88,10 @@
       </div>
     </div>-->
   </div>
-
 </template>
 
 <script setup>
 import UsuarioInfo from "@/components/sistema/perfil/UsuarioInfo.vue";
 import PessoaisInfo from "@/components/sistema/perfil/PessoaisInfo.vue";
-//import PerfilNutricional from "@/components/sistema/perfil/PerfilNutricional.vue";
-
+import PerfilNutricional from "@/components/sistema/perfil/PerfilNutricional.vue";
 </script>
