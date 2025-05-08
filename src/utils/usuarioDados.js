@@ -28,10 +28,14 @@ export const UsuarioDados = () => {
     encontrado: "",
   });
 
-  const padraoAlimentar = reactive({
-    dietaEspc: "",
+  const perfilNutricionalDados = reactive({
+    nivel_atividade: "",
+    objetivo: "",
+    dieta: "",
     restricao: "",
     preferencia: "",
+    condicoesMedica: "",
+    alergias: "",
     encontrado: "",
   });
 
@@ -85,28 +89,32 @@ export const UsuarioDados = () => {
       });
   }
 
-  async function padraoAlimentarDados() {
+  async function perfilNutricional() {
     await https
-      .get("/padrao-alimentar", {
+      .get("/perfil-nutricional", {
         headers: {
           "x-monte-ia-fit-token": token.value,
         },
       })
       .then((res) => {
-        const dados = res.data;
-        padraoAlimentar.dietaEspc = dados.DietaEspecifica
-        padraoAlimentar.restricao = dados.RestricaoAlimentar
-        padraoAlimentar.preferencia = dados.PreferenciaAlimentar
-        padraoAlimentar.encontrado = true
-        return true
+        console.log(res);
+        const dados = res.data.result[0];
+        perfilNutricionalDados.dieta = dados.TipoDieta;
+        perfilNutricionalDados.objetivo = dados.Objetivo;
+        perfilNutricionalDados.nivel_atividade = dados.NivelAtividade;
+        perfilNutricionalDados.preferencia = dados.PreferenciasAlimentares;
+        perfilNutricionalDados.restricao = dados.RestricoesAlimentares;
+        perfilNutricionalDados.condicoesMedica = dados.CondicoesMedica;
+        perfilNutricionalDados.alergias = dados.Alergias;
+        perfilNutricionalDados.encontrado = true;
+        return true;
       })
       .catch((err) => {
-        const res = err.response;
-        if (res.status === 404) {
-          padraoAlimentar.encontrado = false;
-          return padraoAlimentar.encontrado;
+        const response = err.response;
+        if (response.status === 404) {
+          perfilNutricionalDados.encontrado = false;
+          return perfilNutricionalDados.encontrado;
         }
-
         return false;
       });
   }
@@ -117,7 +125,7 @@ export const UsuarioDados = () => {
     usuarioDados,
     pessoa,
     pessoaDados,
-    padraoAlimentar,
-    padraoAlimentarDados,
+    perfilNutricional,
+    perfilNutricionalDados,
   };
 };

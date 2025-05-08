@@ -9,7 +9,7 @@ import RegistroUsuarioPage from "@/pages/RegistroUsuarioPage.vue";
 //Usuario Interno
 import PerfilPage from "@/pages/Usuario/PerfilPage.vue";
 import InformacoesPessoaisPage from "@/pages/Usuario/add/InformacoesPessoaisPage.vue";
-import EstiloAlimentarPage from "@/pages/Usuario/add/EstiloAlimentarPage.vue";
+import PerfilNutricionalPage from "@/pages/Usuario/add/PerfilNutricionalPage.vue";
 
 //Treino Inteligente
 import IndexPage from "@/pages/IA/TreinoInteligente/IndexPage.vue";
@@ -23,7 +23,6 @@ import ListarExerciciosPage from "@/pages/IA/TreinoInteligente/Fichas/ListarExer
 //Pacotes FitCoins
 import PacotesPage from "@/pages/FitCoins/PacotesPage.vue";
 import DetalhesPacote from "@/pages/FitCoins/DetalhesPacote.vue";
-
 
 const routes = [
   {
@@ -53,9 +52,9 @@ const routes = [
         meta: { auth: true },
       },
       {
-        path: "adicionar/estilo/alimentar",
-        component: EstiloAlimentarPage,
-        name: "adicionar-estilo-alimentacao",
+        path: "adicionar/perfil-nutricional",
+        component: PerfilNutricionalPage,
+        name: "adicionar-perfil-nutricional",
         meta: { auth: true },
       },
     ],
@@ -106,7 +105,7 @@ const routes = [
         component: GerarFichaPage,
         name: "gerar-ficha-treino",
         meta: { auth: true },
-      }
+      },
     ],
   },
   {
