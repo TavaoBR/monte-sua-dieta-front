@@ -7,7 +7,7 @@ const { perfilNutricionalDados, perfilNutricional } = UsuarioDados();
 const isLoading = ref(true);
 
 function irAdicionarPadraoAlimentar() {
-  window.location.href = "/usuario/adicionar/estilo/alimentar";
+  window.location.href = "/usuario/adicionar/perfil-nutricional";
 }
 
 function truncarTexto(texto, limite = 60) {
