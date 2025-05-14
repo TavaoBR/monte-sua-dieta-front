@@ -39,7 +39,7 @@ async function comprar() {
       { pacote: props.id },
       {
         headers: {
-          "x-monte-ia-fit-token": auth.token,
+          "x-api-minha-ia-fit-token": auth.token,
         },
       }
     )

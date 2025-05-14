@@ -14,14 +14,14 @@ export const exerciciosDados = () => {
   const listaMusculos = reactive([]);
   const listaExercicios = reactive([]);
   const nomeMuscular = reactive({
-    nome: ""
-  })
+    nome: "",
+  });
 
   async function musculos() {
     await https
       .get("/exercicios/listar/musculos", {
         headers: {
-          "x-monte-ia-fit-token": token.value,
+          "x-api-minha-ia-fit-token": token.value,
         },
       })
       .then((res) => {
@@ -40,7 +40,7 @@ export const exerciciosDados = () => {
     await https
       .get(`/exercicios/listar/exercicios/${idGrupo}`, {
         headers: {
-          "x-monte-ia-fit-token": token.value,
+          "x-api-minha-ia-fit-token": token.value,
         },
       })
       .then((res) => {

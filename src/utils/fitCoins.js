@@ -12,50 +12,50 @@ export const fitCoinsApi = () => {
   const token = ref(getCookie("token"));
 
   const pacotes = reactive([]);
-  const pacote = reactive({})
+  const pacote = reactive({});
 
   async function pacotesFetch() {
     await https
       .get("/fit-coins", {
         headers: {
-          "x-monte-ia-fit-token": token.value,
+          "x-api-minha-ia-fit-token": token.value,
         },
       })
       .then((res) => {
-        console.log(res)
+        console.log(res);
         const dados = res.data;
-        pacotes.splice(0, pacotes.length, ...dados)
+        pacotes.splice(0, pacotes.length, ...dados);
         return true;
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
         return false;
       });
   }
 
   async function fitCoin(id) {
     await https
-    .get(`/fit-coins/${id}`, {
-      headers: {
-        "x-monte-ia-fit-token": token.value,
-      },
-    })
-    .then((res) => {
-      console.log(res)
-      const dados = res.data;
-      Object.assign(pacote, dados);
-      return true;
-    })
-    .catch((err) => {
-      console.log(err)
-      return false;
-    });
+      .get(`/fit-coins/${id}`, {
+        headers: {
+          "x-api-minha-ia-fit-token": token.value,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        const dados = res.data;
+        Object.assign(pacote, dados);
+        return true;
+      })
+      .catch((err) => {
+        console.log(err);
+        return false;
+      });
   }
 
   return {
     pacotesFetch,
     fitCoin,
     pacotes,
-    pacote
+    pacote,
   };
 };

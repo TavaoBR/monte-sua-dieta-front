@@ -20,7 +20,7 @@ export const planoALimentar = () => {
     await https
       .get("/plano-alimentar", {
         headers: {
-          "x-monte-ia-fit-token": token.value,
+          "x-api-minha-ia-fit-token": token.value,
         },
       })
       .then((res) => {
@@ -41,7 +41,7 @@ export const planoALimentar = () => {
     await https
       .get(`/plano-alimentar/${Token}`, {
         headers: {
-          "x-monte-ia-fit-token": token.value,
+          "x-api-minha-ia-fit-token": token.value,
         },
       })
       .then((res) => {

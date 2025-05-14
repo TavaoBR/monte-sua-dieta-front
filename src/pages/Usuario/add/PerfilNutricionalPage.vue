@@ -417,7 +417,7 @@ async function enviar() {
   await https
     .post("/perfil-nutricional/adicionar", form, {
       headers: {
-        "x-monte-ia-fit-token": auth.token,
+        "x-api-minha-ia-fit-token": auth.token,
       },
     })
     .then((res) => {

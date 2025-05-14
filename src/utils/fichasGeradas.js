@@ -24,7 +24,7 @@ export const fichasGeradasDados = () => {
         await https
         .get("/fichas", {
             headers: {
-             "x-monte-ia-fit-token": token.value,
+             "x-api-minha-ia-fit-token": token.value,
             },
         })
         .then((res)=>{
@@ -43,7 +43,7 @@ export const fichasGeradasDados = () => {
         await https
         .get(`/fichas/exercicios/${id}`, {
             headers: {
-             "x-monte-ia-fit-token": token.value,
+             "x-api-minha-ia-fit-token": token.value,
             },
         })
         .then((res)=>{
