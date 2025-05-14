@@ -20,6 +20,9 @@ import GerarFichaPage from "@/pages/IA/TreinoInteligente/Fichas/GerarFichaPage.v
 import ListarFichasPage from "@/pages/IA/TreinoInteligente/Fichas/ListarFichasPage.vue";
 import ListarExerciciosPage from "@/pages/IA/TreinoInteligente/Fichas/ListarExerciciosPage.vue";
 
+//Nutrição Inteligente
+import IndexPageNT from "@/pages/IA/NutricaoInteligente/IndexPage.vue";
+import PlanoAlimentarPage from "@/pages/IA/NutricaoInteligente/PlanoAlimentarPage.vue";
 //Pacotes FitCoins
 import PacotesPage from "@/pages/FitCoins/PacotesPage.vue";
 import DetalhesPacote from "@/pages/FitCoins/DetalhesPacote.vue";
@@ -104,6 +107,24 @@ const routes = [
         path: "fichas-treino/gerar",
         component: GerarFichaPage,
         name: "gerar-ficha-treino",
+        meta: { auth: true },
+      },
+    ],
+  },
+  {
+    path: "/nutricao-inteligente",
+    component: PrivateLayout,
+    children: [
+      {
+        path: "",
+        component: IndexPageNT,
+        name: "nutricao-inteligente",
+        meta: { auth: true },
+      },
+      {
+        path: "plano-alimentar",
+        component: PlanoAlimentarPage,
+        name: "plano-alimentar",
         meta: { auth: true },
       },
     ],

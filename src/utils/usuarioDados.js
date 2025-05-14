@@ -98,7 +98,7 @@ export const UsuarioDados = () => {
       })
       .then((res) => {
         console.log(res);
-        const dados = res.data.result[0];
+        const dados = res.data.result;
         perfilNutricionalDados.dieta = dados.TipoDieta;
         perfilNutricionalDados.objetivo = dados.Objetivo;
         perfilNutricionalDados.nivel_atividade = dados.NivelAtividade;
