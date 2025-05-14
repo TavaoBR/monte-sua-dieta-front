@@ -294,7 +294,7 @@ async function verificarPrefencia() {
   await https
     .post("/ia/verificar/preferencias-alimentares", padraoRegistro, {
       headers: {
-        "x-monte-ia-fit-token": auth.token,
+        "x-api-minha-ia-fit-token": auth.token,
       },
     })
     .then((res) => {
@@ -315,7 +315,7 @@ async function add() {
   await https
     .post("/padrao-alimentar/cadastro", padraoRegistro, {
       headers: {
-        "x-monte-ia-fit-token": auth.token,
+        "x-api-minha-ia-fit-token": auth.token,
       },
     })
     .then((res) => {

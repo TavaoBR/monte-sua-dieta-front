@@ -168,7 +168,7 @@ async function gerarPlano() {
   await https
     .post("/ia/gerar-plano-alimentar", form, {
       headers: {
-        "x-monte-ia-fit-token": auth.token,
+        "x-api-minha-ia-fit-token": auth.token,
       },
     })
     .then((res) => {

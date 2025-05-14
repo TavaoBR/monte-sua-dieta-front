@@ -288,7 +288,7 @@ async function add() {
   await https
     .post("/pessoa/cadastro", pessoaRegistro, {
       headers: {
-        "x-monte-ia-fit-token": auth.token,
+        "x-api-minha-ia-fit-token": auth.token,
       },
     })
     .then((res) => {

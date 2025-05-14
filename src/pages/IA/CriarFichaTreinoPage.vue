@@ -286,9 +286,6 @@ const ficha = reactive({
   alogamento: "",
 });
 
-
-
-
 function verificarPreenchimento() {
   if (
     ficha.objetivo === "" &&
@@ -376,7 +373,7 @@ async function gerarFicha() {
   await https
     .post("/ia/ficha-treino", ficha, {
       headers: {
-        "x-monte-ia-fit-token": auth.token,
+        "x-api-minha-ia-fit-token": auth.token,
       },
     })
     .then((res) => {
@@ -544,12 +541,12 @@ const checkGrupos = [
   },
 ];
 
-onMounted(async ()=>{
-    await pessoaDados();
-    ficha.nome = pessoa.nome + " " + pessoa.sobrenome;
-    ficha.idade = pessoa.idade;
-    ficha.sexo = sexo(pessoa.sexo);
-    ficha.altura = pessoa.altura;
-    ficha.peso = pessoa.peso;  
-})
+onMounted(async () => {
+  await pessoaDados();
+  ficha.nome = pessoa.nome + " " + pessoa.sobrenome;
+  ficha.idade = pessoa.idade;
+  ficha.sexo = sexo(pessoa.sexo);
+  ficha.altura = pessoa.altura;
+  ficha.peso = pessoa.peso;
+});
 </script>

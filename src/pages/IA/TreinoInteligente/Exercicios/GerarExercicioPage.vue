@@ -243,7 +243,7 @@ async function gerarExercicios() {
   await https
     .post("/ia/gerar-exercicios", exercicios, {
       headers: {
-        "x-monte-ia-fit-token": auth.token,
+        "x-api-minha-ia-fit-token": auth.token,
       },
     })
     .then((res) => {

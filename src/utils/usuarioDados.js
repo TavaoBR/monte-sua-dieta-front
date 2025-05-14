@@ -43,7 +43,7 @@ export const UsuarioDados = () => {
     await https
       .get("/usuario", {
         headers: {
-          "x-monte-ia-fit-token": token.value,
+          "x-api-minha-ia-fit-token": token.value,
         },
       })
       .then((res) => {
@@ -64,7 +64,7 @@ export const UsuarioDados = () => {
     await https
       .get("/pessoa", {
         headers: {
-          "x-monte-ia-fit-token": token.value,
+          "x-api-minha-ia-fit-token": token.value,
         },
       })
       .then((res) => {
@@ -93,7 +93,7 @@ export const UsuarioDados = () => {
     await https
       .get("/perfil-nutricional", {
         headers: {
-          "x-monte-ia-fit-token": token.value,
+          "x-api-minha-ia-fit-token": token.value,
         },
       })
       .then((res) => {

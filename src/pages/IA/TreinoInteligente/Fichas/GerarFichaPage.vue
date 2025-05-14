@@ -401,7 +401,7 @@ async function gerarFicha() {
   await https
     .post("/ia/gerar-ficha-treino", formDados, {
       headers: {
-        "x-monte-ia-fit-token": auth.token,
+        "x-api-minha-ia-fit-token": auth.token,
       },
     })
     .then((res) => {
