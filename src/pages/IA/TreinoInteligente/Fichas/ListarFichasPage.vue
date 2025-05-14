@@ -75,11 +75,11 @@
       <span class="text-blue-600 dark:text-blue-500">confira abaixo</span>
     </h2>
 
-    <p class="mb-4 text-1xl font-extrabold ">
-          Aviso: estas fichas são geradas com o auxílio de inteligência
-          artificial. Para um acompanhamento mais eficaz e seguro, consulte um
-          profissional da área.
-        </p>
+    <p class="mb-4 text-1xl font-extrabold">
+      Aviso: estas fichas são geradas com o auxílio de inteligência artificial.
+      Para um acompanhamento mais eficaz e seguro, consulte um profissional da
+      área.
+    </p>
 
     <a
       href="/treino-inteligente/fichas-treino/gerar"
@@ -88,10 +88,9 @@
     >
 
     <ListarFichas />
-
   </div>
 </template>
 
 <script setup>
-import ListarFichas from '@/components/sistema/treinointeligente/fichas/ListarFichas.vue';
+import ListarFichas from "@/components/sistema/treinointeligente/fichas/ListarFichas.vue";
 </script>

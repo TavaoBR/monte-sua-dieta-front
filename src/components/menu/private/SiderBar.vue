@@ -147,7 +147,7 @@ const menuItens = computed(() => {
     },
     {
       title: "Nutrição Inteligente",
-      href: "#",
+      href: "/nutricao-inteligente",
       badge: "",
       icon: `
     <svg 

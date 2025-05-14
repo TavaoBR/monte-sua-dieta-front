@@ -58,13 +58,13 @@
           <h5
             class="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white"
           >
-            Gerar Exercicíos
+            Exercicíos
           </h5>
         </a>
         <p class="mb-3 font-normal text-gray-200 dark:text-gray-400">
-          Esta opção a IA irá gerar uma lista completa de exercícios baseada no grupo
-          muscular escolhido. Até o momento, esta função é válida
-          apenas para praticantes que frequentam academia regularmente
+          Esta opção a IA irá gerar uma lista completa de exercícios baseada no
+          grupo muscular escolhido. Até o momento, esta função é válida apenas
+          para praticantes que frequentam academia regularmente
         </p>
         <a
           href="/treino-inteligente/listar-musculos-escolhidos"
@@ -96,13 +96,14 @@
           <h5
             class="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white"
           >
-            Gerar Ficha de treino
+            Ficha de treino
           </h5>
         </a>
         <p class="mb-3 font-normal text-gray-200 dark:text-gray-400">
           Esta opção gera uma ficha de treino completa personalizada para você.
-          A IA irá distribuir melhor os dias de treino.
-          Até o momento, esta função é válida apenas para praticantes que frequentam academia regularmente
+          A IA irá distribuir melhor os dias de treino. Até o momento, esta
+          função é válida apenas para praticantes que frequentam academia
+          regularmente
         </p>
         <a
           href="/treino-inteligente/fichas-treino"

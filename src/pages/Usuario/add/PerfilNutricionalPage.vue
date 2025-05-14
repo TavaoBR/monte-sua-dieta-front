@@ -299,25 +299,25 @@ const selectDieta = [
   // Dietas com foco em macronutrientes
   { label: "Low Carb", value: "low carb" },
   { label: "Cetogênica (Keto)", value: "cetogênica" },
-  { label: "High Carb, Low Fat (HCLF)", value: "hclf" },
-  { label: "Alta em Proteínas", value: "alta em proteinas" },
+  //{ label: "High Carb, Low Fat (HCLF)", value: "hclf" },
+  //{ label: "Alta em Proteínas", value: "alta em proteinas" },
 
   // Dietas com foco em objetivos específicos
-  { label: "Dieta de Perda de Peso", value: "perda de peso" },
-  { label: "Dieta de Ganho de Massa", value: "ganho de massa" },
-  { label: "Dieta Anti-inflamatória", value: "anti-inflamatoria" },
-  { label: "Dieta Detox", value: "detox" },
+  //{ label: "Dieta de Perda de Peso", value: "perda de peso" },
+  //{ label: "Dieta de Ganho de Massa", value: "ganho de massa" },
+  //{ label: "Dieta Anti-inflamatória", value: "anti-inflamatoria" },
+  //{ label: "Dieta Detox", value: "detox" },
 
   // Dietas modernas e tendências
-  { label: "Paleolítica (Paleo)", value: "paleo" },
-  { label: "Whole30", value: "whole30" },
-  { label: "DASH", value: "dash" },
-  { label: "Baixo FODMAP", value: "baixo fodmap" },
+  //{ label: "Paleolítica (Paleo)", value: "paleo" },
+  //{ label: "Whole30", value: "whole30" },
+  //{ label: "DASH", value: "dash" },
+  //{ label: "Baixo FODMAP", value: "baixo fodmap" },
 
   // Outras
-  { label: "Jejum Intermitente", value: "jejum intermitente" },
-  { label: "Raw Food (Crudivorismo)", value: "crudivorismo" },
-  { label: "Macrobiótica", value: "macrobiótica" },
+  //{ label: "Jejum Intermitente", value: "jejum intermitente" },
+  //{ label: "Raw Food (Crudivorismo)", value: "crudivorismo" },
+  //{ label: "Macrobiótica", value: "macrobiótica" },
 ];
 
 const selectObj = [
